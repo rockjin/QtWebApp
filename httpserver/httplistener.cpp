@@ -40,7 +40,7 @@ void HttpListener::listen()
     }
     QString host = settings->value("host").toString();
     int port=settings->value("port").toInt();
-    QTcpServer::listen(host.isEmpty() ? QHostAddress::Any : QHostAddress(host), port);
+    QTcpServer::listen(host.isEmpty() ? QHostAddress::Any : QHostAddress(host), quint16(port));
     if (!isListening())
     {
         qCritical("HttpListener: Cannot bind on port %i: %s",port,qPrintable(errorString()));
